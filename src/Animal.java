@@ -1,11 +1,17 @@
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
 import java.awt.*;
 import javax.swing.*;
 
-
+/**
+ * A class that initializes the applet and creates the GUI.
+ *
+ * TODO: add background
+ *
+ * @author Heather Bradfield
+ * @version 09/19/2016
+ */
 public class Animal extends JApplet {
     public static final String menuPan = "Menu";
     public static final String instrPan = "Instructions";
@@ -19,6 +25,11 @@ public class Animal extends JApplet {
     Label testLabel;
     Image bgImage = null;
 
+    /**
+     * Creates animal icons and runs applet
+     * TODO: maybe try to import background here?
+     *
+     */
     public void init() {
         animalImg = new Icon[]{   //put .png in array
                 new ImageIcon(getClass().getResource("Images/cow.png")),
@@ -56,8 +67,10 @@ public class Animal extends JApplet {
         g.drawImage(bgImage, 0, 0, this);
     }
 
-
-    private void createGUI() { //create all panels
+    /**
+     * Creates all panels
+     */
+    private void createGUI() {
         MenuPanel menu = new MenuPanel(this);
         InstructPanel instr = new InstructPanel(this);
         SettingsPanel sett = new SettingsPanel(this);
@@ -70,6 +83,10 @@ public class Animal extends JApplet {
         getContentPane().add(mainPanel);
     }
 
+    /**
+     * Swaps panels
+     * @param name the name of the panel to be switched to
+     */
     public void swapCard(String name) {
         cardlayout.show(mainPanel, name);
     }

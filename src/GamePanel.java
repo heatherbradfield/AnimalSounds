@@ -5,25 +5,43 @@ import java.net.URL;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
 /**
- * Created by heather.bradfield823 on 9/14/16.
+ * The actual game.
+ * Generates animal images and sounds.
+ *
+ * @author Heather Bradfield
+ * @version 09/19/2016
  */
 class GamePanel extends JPanel {
     int i = 0;
+    String soundKey = "";
     public GamePanel(final Animal newanimal) {
 
         JButton sound = new JButton("Play Sound");
-        ArrayList<String> wavs = new ArrayList<String>() {{
-            add("/Audio/CowMoo.wav");
-            add("/Audio/Duckquack.wav");
-            add("/Audio/Monkey.wav");
-            add("/Audio/Owlhoot.wav");
+        HashMap<String,String> animals = new HashMap<>();
+        animals.put("cow","/Audio/CowMoo.wav");
+        animals.put("duck","/Audio/Duckquack.wav");
+        animals.put("monkey","/Audio/Monkey.wav");
+        animals.put("owl","/Audio/Owlhoot.wav");
+        ArrayList<String> keys = new ArrayList<String>() {{
+            add("cow");
+            add("duck");
+            add("monkey");
+            add("owl");
         }};
+        Collections.shuffle(keys);
 
         sound.addActionListener(new ActionListener() {
+            /**
+             * Plays sound of current animal.
+             * @param e mouseClicked or mousePressed event
+             */
             public void actionPerformed(ActionEvent e) {
-                URL url = getClass().getResource(wavs.get(i));
+                soundKey = keys.get(i);
+                URL url = getClass().getResource(animals.get(soundKey));
                 AudioClip clip = Applet.newAudioClip(url);
                 clip.play();
             }
@@ -36,8 +54,16 @@ class GamePanel extends JPanel {
         image0.setContentAreaFilled(false);
         image0.setFocusPainted(false);
         image0.addActionListener(new ActionListener() {
+            /**
+             * If image0 selected, check if animal matches sound.
+             * If it matches, hide image and choose next sound.
+             * Else, do nothing.
+             * TODO: if right generate green box around img, if wrong generate red box around img
+             *
+             * @param e the mouseClicked or mousePressed event
+             */
             public void actionPerformed(ActionEvent e) {
-                if (i == 0) {
+                if (soundKey.equals("cow")) {
                     image0.setVisible(false);
                     i++;
                 } else {
@@ -55,8 +81,16 @@ class GamePanel extends JPanel {
         image1.setBorderPainted(false);
         image1.setFocusPainted(false);
         image1.addActionListener(new ActionListener() {
+            /**
+             * If image1 selected, check if animal matches sound.
+             * If it matches, hide image and choose next sound.
+             * Else, do nothing.
+             * TODO: if right generate green box around img, if wrong generate red box around img
+             *
+             * @param e the mouseClicked or mousePressed event
+             */
             public void actionPerformed(ActionEvent e) {
-                if (i == 1) {
+                if (soundKey.equals("duck")) {
                     image1.setVisible(false);
                     i++;
                 } else {
@@ -74,8 +108,16 @@ class GamePanel extends JPanel {
         image2.setBorderPainted(false);
         image2.setFocusPainted(false);
         image2.addActionListener(new ActionListener() {
+            /**
+             * If image2 selected, check if animal matches sound.
+             * If it matches, hide image and choose next sound.
+             * Else, do nothing.
+             * TODO: if right generate green box around img, if wrong generate red box around img
+             *
+             * @param e the mouseClicked or mousePressed event
+             */
             public void actionPerformed(ActionEvent e) {
-                if (i == 2) {
+                if (soundKey.equals("monkey")) {
                     image2.setVisible(false);
                     i++;
                 } else {
@@ -92,8 +134,16 @@ class GamePanel extends JPanel {
         image3.setBorderPainted(false);
         image3.setFocusPainted(false);
         image3.addActionListener(new ActionListener() {
+            /**
+             * If image3 selected, check if animal matches sound.
+             * If it matches, hide image and choose next sound.
+             * Else, do nothing.
+             * TODO: if right generate green box around img, if wrong generate red box around img
+             *
+             * @param e the mouseClicked or mousePressed event
+             */
             public void actionPerformed(ActionEvent e) {
-                if (i == 3) {
+                if (soundKey.equals("owl")) {
                     image3.setVisible(false);
                     i++;
                 } else {
@@ -107,6 +157,11 @@ class GamePanel extends JPanel {
 
         JButton menu= new JButton("Back to Menu");
         menu.addActionListener(new ActionListener(){
+            /**
+             * Changes panel back to Main Menu
+             * TODO: allow user to start new game in main menu when "Play" is selected
+             * @param e
+             */
             public void actionPerformed(ActionEvent e){
                 newanimal.swapCard(Animal.menuPan);
             }
