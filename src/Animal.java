@@ -1,9 +1,7 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
-import javax.swing.JButton;
 import java.awt.*;
 import javax.swing.*;
 
@@ -15,10 +13,11 @@ public class Animal extends JApplet {
     public static final String gamePan = "Game";
 
     public static Icon[] animalImg;
-    public static Icon backgroundImg;
 
     private CardLayout cardlayout = new CardLayout();
     private JPanel mainPanel = new JPanel(cardlayout);
+    Label testLabel;
+    Image bgImage = null;
 
     public void init() {
         animalImg = new Icon[]{   //put .png in array
@@ -28,10 +27,20 @@ public class Animal extends JApplet {
                 new ImageIcon(getClass().getResource("Images/Owl.png")),
         };
 
-        //test this
-        //backgroundImg = new ImageIcon(getClass().getResource("Images/farm.png"));
-
         try {
+            MediaTracker tracker = new MediaTracker(this);
+            bgImage = getImage
+                    (getClass().getResource("Images/farm.jpg"));
+            tracker.addImage(bgImage, 0);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        testLabel = new Label("Testing");
+        add(testLabel);
+
+        try
+
+        {
             javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
                 public void run() {
                     createGUI();
@@ -41,6 +50,12 @@ public class Animal extends JApplet {
             System.err.println("createGUI didn't successfully complete");
         }
     }
+
+    public void paint(Graphics g) {
+        super.paint(g);
+        g.drawImage(bgImage, 0, 0, this);
+    }
+
 
     private void createGUI() { //create all panels
         MenuPanel menu = new MenuPanel(this);

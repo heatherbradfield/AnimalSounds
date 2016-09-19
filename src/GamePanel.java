@@ -15,9 +15,9 @@ class GamePanel extends JPanel {
 
         JButton sound = new JButton("Play Sound");
         ArrayList<String> wavs = new ArrayList<String>() {{
-            add("/Audio/Owlhoot.wav");
-            add("/Audio/Owlhoot.wav");
-            add("/Audio/Owlhoot.wav");
+            add("/Audio/CowMoo.wav");
+            add("/Audio/Duckquack.wav");
+            add("/Audio/Monkey.wav");
             add("/Audio/Owlhoot.wav");
         }};
 
@@ -41,9 +41,9 @@ class GamePanel extends JPanel {
                     image0.setVisible(false);
                     i++;
                 } else {
-                    JLabel jlabel = new JLabel("Try again!");
-                    jlabel.setFont(new Font("Verdana",1,20));
-                    add(jlabel);
+//                    JLabel jlabel = new JLabel("Try again!");
+//                    jlabel.setFont(new Font("Verdana",1,20));
+//                    add(jlabel);
                 }
             }
         });
@@ -60,9 +60,9 @@ class GamePanel extends JPanel {
                     image1.setVisible(false);
                     i++;
                 } else {
-                    JLabel jlabel = new JLabel("Try again!");
-                    jlabel.setFont(new Font("Verdana",1,20));
-                    add(jlabel);
+//                    JLabel jlabel = new JLabel("Try again!");
+//                    jlabel.setFont(new Font("Verdana",1,20));
+//                    add(jlabel);
                 }
             }
         });
@@ -79,9 +79,9 @@ class GamePanel extends JPanel {
                     image2.setVisible(false);
                     i++;
                 } else {
-                    JLabel jlabel = new JLabel("Try again!");
-                    jlabel.setFont(new Font("Verdana",1,20));
-                    add(jlabel);
+//                    JLabel jlabel = new JLabel("Try again!");
+//                    jlabel.setFont(new Font("Verdana",1,20));
+//                    add(jlabel);
                 }
             }
         });
@@ -97,9 +97,9 @@ class GamePanel extends JPanel {
                     image3.setVisible(false);
                     i++;
                 } else {
-                    JLabel jlabel = new JLabel("Try again!");
-                    jlabel.setFont(new Font("Verdana",1,20));
-                    add(jlabel);
+//                    JLabel jlabel = new JLabel("Try again!");
+//                    jlabel.setFont(new Font("Verdana",1,20));
+//                    add(jlabel);
                 }
             }
         });
