@@ -1,7 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
-import java.awt.*;
+import java.applet.*;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,11 +12,25 @@ import java.awt.event.ActionListener;
 class GamePanel extends JPanel {
     public GamePanel(final Animal newanimal){
 
+        JButton sound = new JButton("Play Sound");
+
+        URL url = getClass().getResource("/Audio/Owlhoot.wav");
+        AudioClip clip = Applet.newAudioClip(url);
+
+        sound.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                clip.play();
+            }
+        });
+        add(sound);
+
+        int score = 0;
+
         JButton image0 = new JButton(Animal.animalImg[0]);
         image0.setOpaque(false);
         image0.setContentAreaFilled(false);
         image0.setBorderPainted(true);
-        image0.setBorder(new LineBorder(Color.RED));
+        //image0.setBorder(new LineBorder(Color.RED));
         image0.setFocusPainted(false);
         image0.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -27,7 +42,8 @@ class GamePanel extends JPanel {
         JButton image1 = new JButton(Animal.animalImg[1]);
         image1.setOpaque(false);
         image1.setContentAreaFilled(false);
-        image1.setBorderPainted(false);
+        image1.setBorderPainted(true);
+        //image1.setBorder(new LineBorder(Color.GREEN));
         image1.setFocusPainted(false);
         image1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -58,5 +74,13 @@ class GamePanel extends JPanel {
             }
         });
         add(image3);
+
+//        JButton menu= new JButton("Back to Menu");
+//        menu.addActionListener(new ActionListener(){
+//            public void actionPerformed(ActionEvent e){
+//                newanimal.swapCard(Animal.menuPan);
+//            }
+//        });
+//        add(menu);
     }
 }
