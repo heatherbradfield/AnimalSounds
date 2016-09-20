@@ -38,16 +38,17 @@ public class Animal extends JApplet {
                 new ImageIcon(getClass().getResource("Images/Owl.png")),
         };
 
-        try {
-            MediaTracker tracker = new MediaTracker(this);
-            bgImage = getImage
-                    (getClass().getResource("Images/farm.jpg"));
-            tracker.addImage(bgImage, 0);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-        testLabel = new Label("Testing");
-        add(testLabel);
+        getContentPane().setBackground(Color.CYAN);
+//        try {
+//            MediaTracker tracker = new MediaTracker(this);
+//            bgImage = getImage
+//                    (getClass().getResource("Images/farm.jpg"));
+//            tracker.addImage(bgImage, 0);
+//        } catch (Exception e) {
+//            System.out.println(e.toString());
+//        }
+//        testLabel = new Label("Testing");
+//        add(testLabel);
 
         try
 
@@ -62,10 +63,10 @@ public class Animal extends JApplet {
         }
     }
 
-    public void paint(Graphics g) {
-        super.paint(g);
-        g.drawImage(bgImage, 0, 0, this);
-    }
+//    public void paint(Graphics g) {
+//        super.paint(g);
+//        g.drawImage(bgImage, 0, 0, this);
+//    }
 
     /**
      * Creates all panels

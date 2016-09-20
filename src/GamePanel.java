@@ -40,10 +40,12 @@ class GamePanel extends JPanel {
              * @param e mouseClicked or mousePressed event
              */
             public void actionPerformed(ActionEvent e) {
-                soundKey = keys.get(i);
-                URL url = getClass().getResource(animals.get(soundKey));
-                AudioClip clip = Applet.newAudioClip(url);
-                clip.play();
+                if (i < 4) {
+                    soundKey = keys.get(i);
+                    URL url = getClass().getResource(animals.get(soundKey));
+                    AudioClip clip = Applet.newAudioClip(url);
+                    clip.play();
+                }
             }
         });
         add(sound);
@@ -64,12 +66,15 @@ class GamePanel extends JPanel {
              */
             public void actionPerformed(ActionEvent e) {
                 if (soundKey.equals("cow")) {
+                    URL url = getClass().getResource("/Audio/correctAnswer.wav");
+                    AudioClip clip = Applet.newAudioClip(url);
+                    clip.play();
                     image0.setVisible(false);
                     i++;
                 } else {
-//                    JLabel jlabel = new JLabel("Try again!");
-//                    jlabel.setFont(new Font("Verdana",1,20));
-//                    add(jlabel);
+                    URL url = getClass().getResource("/Audio/wrongAnswer.wav");
+                    AudioClip clip = Applet.newAudioClip(url);
+                    clip.play();
                 }
             }
         });
@@ -91,12 +96,15 @@ class GamePanel extends JPanel {
              */
             public void actionPerformed(ActionEvent e) {
                 if (soundKey.equals("duck")) {
+                    URL url = getClass().getResource("/Audio/correctAnswer.wav");
+                    AudioClip clip = Applet.newAudioClip(url);
+                    clip.play();
                     image1.setVisible(false);
                     i++;
                 } else {
-//                    JLabel jlabel = new JLabel("Try again!");
-//                    jlabel.setFont(new Font("Verdana",1,20));
-//                    add(jlabel);
+                    URL url = getClass().getResource("/Audio/wrongAnswer.wav");
+                    AudioClip clip = Applet.newAudioClip(url);
+                    clip.play();
                 }
             }
         });
@@ -118,12 +126,15 @@ class GamePanel extends JPanel {
              */
             public void actionPerformed(ActionEvent e) {
                 if (soundKey.equals("monkey")) {
+                    URL url = getClass().getResource("/Audio/correctAnswer.wav");
+                    AudioClip clip = Applet.newAudioClip(url);
+                    clip.play();
                     image2.setVisible(false);
                     i++;
                 } else {
-//                    JLabel jlabel = new JLabel("Try again!");
-//                    jlabel.setFont(new Font("Verdana",1,20));
-//                    add(jlabel);
+                    URL url = getClass().getResource("/Audio/wrongAnswer.wav");
+                    AudioClip clip = Applet.newAudioClip(url);
+                    clip.play();
                 }
             }
         });
@@ -144,12 +155,15 @@ class GamePanel extends JPanel {
              */
             public void actionPerformed(ActionEvent e) {
                 if (soundKey.equals("owl")) {
+                    URL url = getClass().getResource("/Audio/correctAnswer.wav");
+                    AudioClip clip = Applet.newAudioClip(url);
+                    clip.play();
                     image3.setVisible(false);
                     i++;
                 } else {
-//                    JLabel jlabel = new JLabel("Try again!");
-//                    jlabel.setFont(new Font("Verdana",1,20));
-//                    add(jlabel);
+                    URL url = getClass().getResource("/Audio/wrongAnswer.wav");
+                    AudioClip clip = Applet.newAudioClip(url);
+                    clip.play();
                 }
             }
         });
