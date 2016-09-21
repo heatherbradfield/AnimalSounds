@@ -18,6 +18,7 @@ import java.util.HashMap;
 class GamePanel extends JPanel {
     int i = 0;
     String soundKey = "";
+    AudioClip clip;
     public GamePanel(final Animal newanimal) {
 
         JButton sound = new JButton("Play Sound");
@@ -43,7 +44,7 @@ class GamePanel extends JPanel {
                 if (i < 4) {
                     soundKey = keys.get(i);
                     URL url = getClass().getResource(animals.get(soundKey));
-                    AudioClip clip = Applet.newAudioClip(url);
+                    clip = Applet.newAudioClip(url);
                     clip.play();
                 }
             }
@@ -60,20 +61,19 @@ class GamePanel extends JPanel {
              * If image0 selected, check if animal matches sound.
              * If it matches, hide image and choose next sound.
              * Else, do nothing.
-             * TODO: if right generate green box around img, if wrong generate red box around img
              *
              * @param e the mouseClicked or mousePressed event
              */
             public void actionPerformed(ActionEvent e) {
                 if (soundKey.equals("cow")) {
                     URL url = getClass().getResource("/Audio/correctAnswer.wav");
-                    AudioClip clip = Applet.newAudioClip(url);
+                    clip = Applet.newAudioClip(url);
                     clip.play();
                     image0.setVisible(false);
                     i++;
                 } else {
                     URL url = getClass().getResource("/Audio/wrongAnswer.wav");
-                    AudioClip clip = Applet.newAudioClip(url);
+                    clip = Applet.newAudioClip(url);
                     clip.play();
                 }
             }
@@ -90,20 +90,19 @@ class GamePanel extends JPanel {
              * If image1 selected, check if animal matches sound.
              * If it matches, hide image and choose next sound.
              * Else, do nothing.
-             * TODO: if right generate green box around img, if wrong generate red box around img
              *
              * @param e the mouseClicked or mousePressed event
              */
             public void actionPerformed(ActionEvent e) {
                 if (soundKey.equals("duck")) {
                     URL url = getClass().getResource("/Audio/correctAnswer.wav");
-                    AudioClip clip = Applet.newAudioClip(url);
+                    clip = Applet.newAudioClip(url);
                     clip.play();
                     image1.setVisible(false);
                     i++;
                 } else {
                     URL url = getClass().getResource("/Audio/wrongAnswer.wav");
-                    AudioClip clip = Applet.newAudioClip(url);
+                    clip = Applet.newAudioClip(url);
                     clip.play();
                 }
             }
@@ -120,20 +119,19 @@ class GamePanel extends JPanel {
              * If image2 selected, check if animal matches sound.
              * If it matches, hide image and choose next sound.
              * Else, do nothing.
-             * TODO: if right generate green box around img, if wrong generate red box around img
              *
              * @param e the mouseClicked or mousePressed event
              */
             public void actionPerformed(ActionEvent e) {
                 if (soundKey.equals("monkey")) {
                     URL url = getClass().getResource("/Audio/correctAnswer.wav");
-                    AudioClip clip = Applet.newAudioClip(url);
+                    clip = Applet.newAudioClip(url);
                     clip.play();
                     image2.setVisible(false);
                     i++;
                 } else {
                     URL url = getClass().getResource("/Audio/wrongAnswer.wav");
-                    AudioClip clip = Applet.newAudioClip(url);
+                    clip = Applet.newAudioClip(url);
                     clip.play();
                 }
             }
@@ -149,20 +147,19 @@ class GamePanel extends JPanel {
              * If image3 selected, check if animal matches sound.
              * If it matches, hide image and choose next sound.
              * Else, do nothing.
-             * TODO: if right generate green box around img, if wrong generate red box around img
              *
              * @param e the mouseClicked or mousePressed event
              */
             public void actionPerformed(ActionEvent e) {
                 if (soundKey.equals("owl")) {
                     URL url = getClass().getResource("/Audio/correctAnswer.wav");
-                    AudioClip clip = Applet.newAudioClip(url);
+                    clip = Applet.newAudioClip(url);
                     clip.play();
                     image3.setVisible(false);
                     i++;
                 } else {
                     URL url = getClass().getResource("/Audio/wrongAnswer.wav");
-                    AudioClip clip = Applet.newAudioClip(url);
+                    clip = Applet.newAudioClip(url);
                     clip.play();
                 }
             }
@@ -173,7 +170,6 @@ class GamePanel extends JPanel {
         menu.addActionListener(new ActionListener(){
             /**
              * Changes panel back to Main Menu
-             * TODO: allow user to start new game in main menu when "Play" is selected
              * @param e
              */
             public void actionPerformed(ActionEvent e){

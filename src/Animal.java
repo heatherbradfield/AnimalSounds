@@ -38,7 +38,9 @@ public class Animal extends JApplet {
                 new ImageIcon(getClass().getResource("Images/Owl.png")),
         };
 
-        getContentPane().setBackground(Color.CYAN);
+        setBackground(Color.CYAN);
+
+//        getContentPane().setBackground(Color.CYAN);
 //        try {
 //            MediaTracker tracker = new MediaTracker(this);
 //            bgImage = getImage
@@ -66,7 +68,8 @@ public class Animal extends JApplet {
 
 //    public void paint(Graphics g) {
 //        super.paint(g);
-//        g.drawImage(bgImage, 0, 0, this);
+//        g.setColor(Color.CYAN);
+//        //g.drawImage(bgImage, 0, 0, this);
 //    }
 
     /**

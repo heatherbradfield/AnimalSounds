@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
 
 /**
  * A class that sets up the main menu and its attributes.
@@ -16,12 +17,15 @@ import java.awt.event.ActionListener;
 public class MenuPanel extends JPanel {
     public MenuPanel(final Animal newanimal){
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
         JLabel name = new JLabel("Animal Sounds",SwingConstants.CENTER);
         name.setFont(new Font("Chalkboard", Font.BOLD, 32));
         name.setForeground(Color.BLUE);
-        add(name);
+        add(name,gbc);
 
         JButton game= new JButton("Play");
         game.addActionListener(new ActionListener(){
@@ -33,7 +37,7 @@ public class MenuPanel extends JPanel {
                 newanimal.swapCard(Animal.gamePan);
             }
         });
-        add(game);
+        add(game,gbc);
 
         JButton instruct= new JButton("Instructions");
         instruct.addActionListener(new ActionListener(){
@@ -45,7 +49,7 @@ public class MenuPanel extends JPanel {
                 newanimal.swapCard(Animal.instrPan);
             }
         });
-        add(instruct);
+        add(instruct,gbc);
 
         JButton sett= new JButton("Settings");
         sett.addActionListener(new ActionListener(){
@@ -57,7 +61,7 @@ public class MenuPanel extends JPanel {
                 newanimal.swapCard(Animal.settPan);
             }
         });
-        add(sett);
+        add(sett,gbc);
 
         JButton quit= new JButton("Quit");
         quit.addActionListener(new ActionListener(){
@@ -69,7 +73,7 @@ public class MenuPanel extends JPanel {
                 System.exit(0); //change so it exits browser
             }
         });
-        add(quit);
+        add(quit,gbc);
     }
 }
 
