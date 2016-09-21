@@ -81,7 +81,7 @@ class InstructPanel extends JPanel{
     public InstructPanel(final Animal newanimal){
 
         add(new JLabel("Instructions"));
-
+        add(new JTextArea("Animal Sounds Will Play As Follows:"));
         JButton menu= new JButton("Back to Menu");
         menu.addActionListener(new ActionListener(){
             /**
