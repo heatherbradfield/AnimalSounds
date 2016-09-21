@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  * A class that sets up the main menu and its attributes.
@@ -80,8 +82,23 @@ public class MenuPanel extends JPanel {
 class InstructPanel extends JPanel{
     public InstructPanel(final Animal newanimal){
 
-        add(new JLabel("Instructions"));
-        add(new JTextArea("Animal Sounds Will Play As Follows:"));
+
+        this.setLayout(new SpringLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        JLabel instrLabel = new JLabel("Instructions", SwingConstants.CENTER);
+        instrLabel.setFont(new Font("Courier New", Font.BOLD, 26));
+        instrLabel.setForeground(Color.RED);
+        this.add(instrLabel, gbc);
+
+        add(new JTextArea("Animal Sounds Will Play As Follows:"), gbc);
+        Icon arrIcon = new ImageIcon(getClass().getResource("Images/arrow.png"));
+        ImageIcon arrow = new ImageIcon("Images/arrow.png");
+        JLabel arrLabel = new JLabel("", arrIcon, JLabel.CENTER);
+        add(arrLabel, gbc);
+
         JButton menu= new JButton("Back to Menu");
         menu.addActionListener(new ActionListener(){
             /**
