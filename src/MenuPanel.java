@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,9 +15,12 @@ import java.awt.event.ActionListener;
  */
 public class MenuPanel extends JPanel {
     public MenuPanel(final Animal newanimal){
+
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         JLabel name = new JLabel("Animal Sounds",SwingConstants.CENTER);
+        name.setFont(new Font("Chalkboard", Font.BOLD, 32));
+        name.setForeground(Color.BLUE);
         add(name);
 
         JButton game= new JButton("Play");

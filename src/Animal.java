@@ -55,6 +55,7 @@ public class Animal extends JApplet {
         {
             javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
                 public void run() {
+                    resize(1000,800);
                     createGUI();
                 }
             });
