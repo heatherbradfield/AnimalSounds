@@ -1,8 +1,12 @@
 import javax.swing.*;
+import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
+import java.net.URL;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  * A class that sets up the main menu and its attributes.
@@ -80,14 +84,83 @@ public class MenuPanel extends JPanel {
 class InstructPanel extends JPanel{
     public InstructPanel(final Animal newanimal){
 
-        add(new JLabel("Instructions"));
-        add(new JTextArea("Animal Sounds Will Play As Follows:"));
+        //stateImgBut[0].setVisible(false);
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        JLabel instrLabel = new JLabel("Instructions", SwingConstants.CENTER);
+        instrLabel.setFont(new Font("Courier New", Font.BOLD, 26));
+        instrLabel.setForeground(Color.RED);
+        this.add(instrLabel, gbc);
+
+        add(new JTextArea("Match the Sound to Each Animal, and if correct, that animal will disappear. Click below to see progression:"), gbc);
+        Icon arrIcon = new ImageIcon(getClass().getResource("Images/arrow.png"));
+        ImageIcon arrow = new ImageIcon("Images/arrow.png");
+        JLabel arrLabel = new JLabel("", arrIcon, JLabel.CENTER);
+        arrLabel.setMaximumSize(new Dimension(200, 100));
+        arrLabel.setPreferredSize(new Dimension(190, 80));
+        arrLabel.setMinimumSize(new Dimension(150, 70));
+        add(arrLabel, gbc);
+
+
+
+        ImageIcon[] stateImg = new ImageIcon[]{   //put .png in array
+                new ImageIcon(getClass().getResource("Images/firstState.png")),
+                new ImageIcon(getClass().getResource("Images/secState.png")),
+                new ImageIcon(getClass().getResource("Images/finalState.png")),
+        };
+
+
+
+            JButton[] stateImgBut = new JButton[]
+                {
+                        new JButton(stateImg[0]),
+                        new JButton(stateImg[1]),
+                        new JButton(stateImg[2]),
+                };
+
+
+        for (int i = 0; i < stateImg.length; i++)
+        {
+            stateImgBut[i].setSize(new Dimension(50,20));
+            stateImgBut[i].setVisible(false);
+            stateImgBut[i].setOpaque(false);
+            stateImgBut[i].setBorderPainted(false);
+            stateImgBut[i].setContentAreaFilled(false);
+            stateImgBut[i].setFocusPainted(false);
+        }
+        stateImgBut[0].setVisible(true);
+        stateImgBut[0].addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e)
+            {
+                stateImgBut[0].setVisible(false);
+                stateImgBut[1].setVisible(true);
+                stateImgBut[1].addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        stateImgBut[1].setVisible(false);
+                        stateImgBut[2].setVisible(true);
+                        stateImgBut[2].addActionListener(new ActionListener()
+                        {
+                            public void actionPerformed(ActionEvent e)
+                            {
+                                newanimal.swapCard(Animal.menuPan);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        add(stateImgBut[0], gbc);
+        add(stateImgBut[1], gbc);
+        add(stateImgBut[2], gbc);
         JButton menu= new JButton("Back to Menu");
-        menu.addActionListener(new ActionListener(){
-            /**
-             * Returns back to Main Menu
-             * @param e the mouseClicked or mouseClicked event
-             */
+        menu.addActionListener(new ActionListener()
+        {
+
             public void actionPerformed(ActionEvent e){
                 newanimal.swapCard(Animal.menuPan);
             }
