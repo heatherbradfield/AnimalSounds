@@ -21,12 +21,15 @@ class GamePanel extends JPanel {
     AudioClip clip;
     public GamePanel(final Animal newanimal) {
 
+        //sound button
         JButton sound = new JButton("Play Sound");
+        //hashmap to associate sounds with their respective animals. Main data structure for game logic
         HashMap<String,String> animals = new HashMap<>();
         animals.put("cow","/Audio/CowMoo.wav");
         animals.put("duck","/Audio/Duckquack.wav");
         animals.put("monkey","/Audio/Monkey.wav");
         animals.put("owl","/Audio/Owlhoot.wav");
+        //keys to associate different animals in hashmap
         ArrayList<String> keys = new ArrayList<String>() {{
             add("cow");
             add("duck");

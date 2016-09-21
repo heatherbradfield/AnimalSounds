@@ -18,8 +18,11 @@ public class Animal extends JApplet {
     public static final String settPan = "Settings";
     public static final String gamePan = "Game";
 
+    //array of animal images
     public static Icon[] animalImg;
 
+
+    //instantiating game logic layouts
     private CardLayout cardlayout = new CardLayout();
     private JPanel mainPanel = new JPanel(cardlayout);
     Label testLabel;
@@ -27,10 +30,11 @@ public class Animal extends JApplet {
 
     /**
      * Creates animal icons and runs applet
-     * TODO: maybe try to import background here?
+     *
      *
      */
     public void init() {
+        //sets icon array to images in images folder
         animalImg = new Icon[]{   //put .png in array
                 new ImageIcon(getClass().getResource("Images/cow.png")),
                 new ImageIcon(getClass().getResource("Images/duck.png")),
@@ -52,6 +56,8 @@ public class Animal extends JApplet {
 //        testLabel = new Label("Testing");
 //        add(testLabel);
 
+
+        //this will make the app runnable
         try
 
         {
