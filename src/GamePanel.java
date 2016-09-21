@@ -15,21 +15,31 @@ import java.util.HashMap;
  * @author Heather Bradfield
  * @version 09/19/2016
  */
-class GamePanel extends JPanel {
+public class GamePanel extends JPanel {
     int i = 0;
+    final int num_of_animals = 4;
     String soundKey = "";
     AudioClip clip;
+    JLabel congrats = new JLabel("GOOD JOB, YOU DID IT!", SwingConstants.CENTER);
+
+    /**
+     * Creates a hash map of animal names and their corresponding sounds.
+     * Creates a sound button and plays a random animal sound.
+     * Displays images and makes logic checks (user clicked on correct animal).
+     * @param newanimal The Animal Sounds applet.
+     */
     public GamePanel(final Animal newanimal) {
 
-        //sound button
-        JButton sound = new JButton("Play Sound");
-        //hashmap to associate sounds with their respective animals. Main data structure for game logic
+        congrats.setFont(new Font("Chalkboard", Font.BOLD, 26));
+        congrats.setForeground(Color.BLUE);
+        congrats.setVisible(false);
+        add(congrats);
+
         HashMap<String,String> animals = new HashMap<>();
         animals.put("cow","/Audio/CowMoo.wav");
         animals.put("duck","/Audio/Duckquack.wav");
         animals.put("monkey","/Audio/Monkey.wav");
         animals.put("owl","/Audio/Owlhoot.wav");
-        //keys to associate different animals in hashmap
         ArrayList<String> keys = new ArrayList<String>() {{
             add("cow");
             add("duck");
@@ -38,13 +48,14 @@ class GamePanel extends JPanel {
         }};
         Collections.shuffle(keys);
 
+        JButton sound = new JButton("Play Sound");
         sound.addActionListener(new ActionListener() {
             /**
              * Plays sound of current animal.
-             * @param e mouseClicked or mousePressed event
+             * @param e The mouseClicked or mousePressed event
              */
             public void actionPerformed(ActionEvent e) {
-                if (i < 4) {
+                if (i < num_of_animals) {
                     soundKey = keys.get(i);
                     URL url = getClass().getResource(animals.get(soundKey));
                     clip = Applet.newAudioClip(url);
@@ -65,7 +76,7 @@ class GamePanel extends JPanel {
              * If it matches, hide image and choose next sound.
              * Else, do nothing.
              *
-             * @param e the mouseClicked or mousePressed event
+             * @param e The mouseClicked or mousePressed event
              */
             public void actionPerformed(ActionEvent e) {
                 if (soundKey.equals("cow")) {
@@ -74,6 +85,10 @@ class GamePanel extends JPanel {
                     clip.play();
                     image0.setVisible(false);
                     i++;
+                    if (i == num_of_animals) {
+                        congrats.setVisible(true);
+                        sound.setVisible(false);
+                    }
                 } else {
                     URL url = getClass().getResource("/Audio/wrongAnswer.wav");
                     clip = Applet.newAudioClip(url);
@@ -94,7 +109,7 @@ class GamePanel extends JPanel {
              * If it matches, hide image and choose next sound.
              * Else, do nothing.
              *
-             * @param e the mouseClicked or mousePressed event
+             * @param e The mouseClicked or mousePressed event
              */
             public void actionPerformed(ActionEvent e) {
                 if (soundKey.equals("duck")) {
@@ -103,6 +118,10 @@ class GamePanel extends JPanel {
                     clip.play();
                     image1.setVisible(false);
                     i++;
+                    if (i == num_of_animals) {
+                        congrats.setVisible(true);
+                        sound.setVisible(false);
+                    }
                 } else {
                     URL url = getClass().getResource("/Audio/wrongAnswer.wav");
                     clip = Applet.newAudioClip(url);
@@ -123,7 +142,7 @@ class GamePanel extends JPanel {
              * If it matches, hide image and choose next sound.
              * Else, do nothing.
              *
-             * @param e the mouseClicked or mousePressed event
+             * @param e The mouseClicked or mousePressed event
              */
             public void actionPerformed(ActionEvent e) {
                 if (soundKey.equals("monkey")) {
@@ -132,6 +151,10 @@ class GamePanel extends JPanel {
                     clip.play();
                     image2.setVisible(false);
                     i++;
+                    if (i == num_of_animals) {
+                        congrats.setVisible(true);
+                        sound.setVisible(false);
+                    }
                 } else {
                     URL url = getClass().getResource("/Audio/wrongAnswer.wav");
                     clip = Applet.newAudioClip(url);
@@ -151,7 +174,7 @@ class GamePanel extends JPanel {
              * If it matches, hide image and choose next sound.
              * Else, do nothing.
              *
-             * @param e the mouseClicked or mousePressed event
+             * @param e The mouseClicked or mousePressed event
              */
             public void actionPerformed(ActionEvent e) {
                 if (soundKey.equals("owl")) {
@@ -160,6 +183,10 @@ class GamePanel extends JPanel {
                     clip.play();
                     image3.setVisible(false);
                     i++;
+                    if (i == num_of_animals) {
+                        congrats.setVisible(true);
+                        sound.setVisible(false);
+                    }
                 } else {
                     URL url = getClass().getResource("/Audio/wrongAnswer.wav");
                     clip = Applet.newAudioClip(url);
@@ -172,10 +199,13 @@ class GamePanel extends JPanel {
         JButton menu= new JButton("Back to Menu");
         menu.addActionListener(new ActionListener(){
             /**
-             * Changes panel back to Main Menu
-             * @param e
+             * Changes panel back to Main Menu.
+             * @param e the mouseClicked or mousePressed event.
              */
             public void actionPerformed(ActionEvent e){
+                newanimal.createGUI();  // used to generate an entire new game
+                                        // not the best practice, but was not given enough time
+                                        // to change how the previous group generated a new game.
                 newanimal.swapCard(Animal.menuPan);
             }
         });
