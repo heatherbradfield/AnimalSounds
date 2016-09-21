@@ -93,7 +93,19 @@ public class Animal extends JApplet {
     }
 }
 
-
+/**
+ *\mainpage
+ *\section maintitle Heather Bradfield, Joshua Steward
+ *
+ * <a href=https://github.com/heatherbradfield/AnimalSounds>Github Repository</a>
+ *
+ *\subsection group Group 7 Educational Game Proposal
+ *The basic idea of the game we are creating is a simple sound matching game for
+ children.  
+ *
+ *Players will be presented with a sound clip of an animal and attempt to match it
+ to the correct image.
+ */
 
 
 
