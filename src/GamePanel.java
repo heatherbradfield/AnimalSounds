@@ -17,10 +17,10 @@ import java.util.HashMap;
  */
 public class GamePanel extends JPanel {
     int i = 0;
-    final int num_of_animals = 4;
     String soundKey = "";
     AudioClip clip;
     JLabel congrats = new JLabel("GOOD JOB, YOU DID IT!", SwingConstants.CENTER);
+    JButton sound = new JButton("Play Sound");
 
     /**
      * Creates a hash map of animal names and their corresponding sounds.
@@ -48,14 +48,13 @@ public class GamePanel extends JPanel {
         }};
         Collections.shuffle(keys);
 
-        JButton sound = new JButton("Play Sound");
         sound.addActionListener(new ActionListener() {
             /**
              * Plays sound of current animal.
              * @param e The mouseClicked or mousePressed event
              */
             public void actionPerformed(ActionEvent e) {
-                if (i < num_of_animals) {
+                if (i < Animal.animals.length) {
                     soundKey = keys.get(i);
                     URL url = getClass().getResource(animals.get(soundKey));
                     clip = Applet.newAudioClip(url);
@@ -65,136 +64,9 @@ public class GamePanel extends JPanel {
         });
         add(sound);
 
-        JButton image0 = new JButton(Animal.animalImg[0]);
-        image0.setOpaque(false);
-        image0.setBorderPainted(false);
-        image0.setContentAreaFilled(false);
-        image0.setFocusPainted(false);
-        image0.addActionListener(new ActionListener() {
-            /**
-             * If image0 selected, check if animal matches sound.
-             * If it matches, hide image and choose next sound.
-             * Else, do nothing.
-             *
-             * @param e The mouseClicked or mousePressed event
-             */
-            public void actionPerformed(ActionEvent e) {
-                if (soundKey.equals("cow")) {
-                    URL url = getClass().getResource("/Audio/correctAnswer.wav");
-                    clip = Applet.newAudioClip(url);
-                    clip.play();
-                    image0.setVisible(false);
-                    i++;
-                    if (i == num_of_animals) {
-                        congrats.setVisible(true);
-                        sound.setVisible(false);
-                    }
-                } else {
-                    URL url = getClass().getResource("/Audio/wrongAnswer.wav");
-                    clip = Applet.newAudioClip(url);
-                    clip.play();
-                }
-            }
-        });
-        add(image0);
-
-        JButton image1 = new JButton(Animal.animalImg[1]);
-        image1.setOpaque(false);
-        image1.setContentAreaFilled(false);
-        image1.setBorderPainted(false);
-        image1.setFocusPainted(false);
-        image1.addActionListener(new ActionListener() {
-            /**
-             * If image1 selected, check if animal matches sound.
-             * If it matches, hide image and choose next sound.
-             * Else, do nothing.
-             *
-             * @param e The mouseClicked or mousePressed event
-             */
-            public void actionPerformed(ActionEvent e) {
-                if (soundKey.equals("duck")) {
-                    URL url = getClass().getResource("/Audio/correctAnswer.wav");
-                    clip = Applet.newAudioClip(url);
-                    clip.play();
-                    image1.setVisible(false);
-                    i++;
-                    if (i == num_of_animals) {
-                        congrats.setVisible(true);
-                        sound.setVisible(false);
-                    }
-                } else {
-                    URL url = getClass().getResource("/Audio/wrongAnswer.wav");
-                    clip = Applet.newAudioClip(url);
-                    clip.play();
-                }
-            }
-        });
-        add(image1);
-
-        JButton image2 = new JButton(Animal.animalImg[2]);
-        image2.setOpaque(false);
-        image2.setContentAreaFilled(false);
-        image2.setBorderPainted(false);
-        image2.setFocusPainted(false);
-        image2.addActionListener(new ActionListener() {
-            /**
-             * If image2 selected, check if animal matches sound.
-             * If it matches, hide image and choose next sound.
-             * Else, do nothing.
-             *
-             * @param e The mouseClicked or mousePressed event
-             */
-            public void actionPerformed(ActionEvent e) {
-                if (soundKey.equals("monkey")) {
-                    URL url = getClass().getResource("/Audio/correctAnswer.wav");
-                    clip = Applet.newAudioClip(url);
-                    clip.play();
-                    image2.setVisible(false);
-                    i++;
-                    if (i == num_of_animals) {
-                        congrats.setVisible(true);
-                        sound.setVisible(false);
-                    }
-                } else {
-                    URL url = getClass().getResource("/Audio/wrongAnswer.wav");
-                    clip = Applet.newAudioClip(url);
-                    clip.play();
-                }
-            }
-        });
-        add(image2);
-        JButton image3 = new JButton(Animal.animalImg[3]);
-        image3.setOpaque(false);
-        image3.setContentAreaFilled(false);
-        image3.setBorderPainted(false);
-        image3.setFocusPainted(false);
-        image3.addActionListener(new ActionListener() {
-            /**
-             * If image3 selected, check if animal matches sound.
-             * If it matches, hide image and choose next sound.
-             * Else, do nothing.
-             *
-             * @param e The mouseClicked or mousePressed event
-             */
-            public void actionPerformed(ActionEvent e) {
-                if (soundKey.equals("owl")) {
-                    URL url = getClass().getResource("/Audio/correctAnswer.wav");
-                    clip = Applet.newAudioClip(url);
-                    clip.play();
-                    image3.setVisible(false);
-                    i++;
-                    if (i == num_of_animals) {
-                        congrats.setVisible(true);
-                        sound.setVisible(false);
-                    }
-                } else {
-                    URL url = getClass().getResource("/Audio/wrongAnswer.wav");
-                    clip = Applet.newAudioClip(url);
-                    clip.play();
-                }
-            }
-        });
-        add(image3);
+        for (int idx = 0; idx < Animal.animals.length; idx++) {
+            addImage(idx, Animal.animals[idx]);
+        }
 
         JButton menu= new JButton("Back to Menu");
         menu.addActionListener(new ActionListener(){
@@ -210,5 +82,40 @@ public class GamePanel extends JPanel {
             }
         });
         add(menu);
+    }
+    
+    public void addImage(int idx, String animal) {
+        JButton image = new JButton(Animal.animalImg[idx]);
+        image.setOpaque(false);
+        image.setBorderPainted(false);
+        image.setContentAreaFilled(false);
+        image.setFocusPainted(false);
+        image.addActionListener(new ActionListener() {
+            /**
+             * If image selected, check if animal matches sound.
+             * If it matches, hide image and choose next sound.
+             * Else, do nothing.
+             *
+             * @param e The mouseClicked or mousePressed event
+             */
+            public void actionPerformed(ActionEvent e) {
+                if (soundKey.equals(animal)) {
+                    URL url = getClass().getResource("/Audio/correctAnswer.wav");
+                    clip = Applet.newAudioClip(url);
+                    clip.play();
+                    image.setVisible(false);
+                    i++;
+                    if (i == Animal.animals.length) {
+                        congrats.setVisible(true);
+                        sound.setVisible(false);
+                    }
+                } else {
+                    URL url = getClass().getResource("/Audio/wrongAnswer.wav");
+                    clip = Applet.newAudioClip(url);
+                    clip.play();
+                }
+            }
+        });
+        add(image);
     }
 }

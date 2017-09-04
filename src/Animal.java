@@ -38,6 +38,7 @@ public class Animal extends JApplet {
      * Array of animal images.
      */
     public static Icon[] animalImg;
+    public static final String[] animals = {"cow", "duck", "monkey", "owl"};
 
     public CardLayout cardlayout = new CardLayout();
     public JPanel mainPanel = new JPanel(cardlayout);
